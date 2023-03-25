@@ -261,7 +261,7 @@ ul {
   max-width: 800px;
   position: relative;
   height: 450px;
-  /* overflow: hidden; */
+  overflow: hidden;
  
 }
 
@@ -360,3 +360,33 @@ ul {
 
     
 }
+
+/* 
+================
+slick carsoul
+================
+*/
+
+
+.slick-container{
+  margin: 0 auto;
+  width: 80vw;
+  margin-top: 10rem;
+  max-width: 800px;
+  text-align: center;
+}
+
+/* .person-img{
+  margin: 0 auto;
+  margin-bottom: 1rem;
+} */
+
+.slick-slide img{
+  display: inline-block;
+}
+
+.slick-prev:before, .slick-next:before {
+  font-size: 25px;
+  color: var(--primary-900)!important;
+}
+

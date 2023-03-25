@@ -1,10 +1,15 @@
 import Carosel from "./Carosel";
+import SlickCarousel from "./SlickCarousel";
 
 
 const App = () => {
+
+
+  
   return (
     <main>
-      <Carosel/>
+      {/* <Carosel/> */}
+      <SlickCarousel/>
     </main>
   );
 };
