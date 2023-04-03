@@ -90,9 +90,8 @@ const filter_reducer = (state, action) => {
         tempProducts=tempProducts.filter((item)=>item.shipping)
       }
 
-      if(price!==max_price){
-        tempProducts=tempProducts.filter((item)=>item.price<price)
-      }
+      tempProducts=tempProducts.filter((item)=>item.price<=price)
+     
 
 
 
