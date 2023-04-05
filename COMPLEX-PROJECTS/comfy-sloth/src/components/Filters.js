@@ -59,7 +59,7 @@ const Filters = () => {
                 }
 
                 return <button key={index} data-color={c} onClick={updateFilters} className={`${color===c?'color-btn active':'color-btn'}`} name='color' style={{background:c}}>
-                  {c==color?<FaCheck/>:null}
+                  {c===color?<FaCheck/>:null}
                 </button>
               })
             }
