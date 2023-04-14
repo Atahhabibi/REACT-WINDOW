@@ -3,20 +3,31 @@ import styled from 'styled-components'
 import { useState,useEffect} from 'react'
 import Values from 'values.js'
 import ColorsList from './ColorsList'
+import { toast } from 'react-toastify'
 
 const Form = () => {
     
     const [color, setColor] = useState('#af4d31');
     const [ShadeArray, setShadeArray] = useState(new Values("#af4d31").all(10));
 
+    
+
 
 
     const handleSubmit=(e)=>{
-        
         e.preventDefault();
-        setColor(color);
-        let newValuesOfColors=new Values(color).all(10);
-        setShadeArray(newValuesOfColors);
+
+        if(color===""){
+            toast.error('Please provie hex value')
+        }else{
+
+            setColor(color);
+            let newValuesOfColors=new Values(color).all(10);
+            setShadeArray(newValuesOfColors);
+        }
+
+        
+      
     }
 
     let newArray=ShadeArray.map((item)=>{
@@ -32,7 +43,7 @@ const Form = () => {
 
          <label htmlFor="color">Color Generator: </label>
          <input type="color" name="color" id="color" value={color===''?'#f9b9a8':color} onChange={(e)=>setColor(e.target.value)} className='input-color'/>
-         <input type="text" value={color}  placeholder='#f9b9a8'  onChange={(e)=>{setColor(e.target.value)}} className='input-text'/>
+         <input type="text" value={color}  placeholder='#f9b9a8'  onChange={(e)=>setColor(e.target.value)} className='input-text'/>
          <button type='submit'>submit</button>
 
      </form>
