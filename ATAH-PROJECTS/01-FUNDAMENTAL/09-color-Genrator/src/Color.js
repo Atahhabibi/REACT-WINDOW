@@ -2,6 +2,7 @@ import React from 'react'
 import { toast } from 'react-toastify';
 import styled from 'styled-components'
 import rgbToHex from './rgbToHex';
+import { memo } from 'react';
 
 const Color = (prop) => {
 
@@ -18,7 +19,7 @@ const Color = (prop) => {
 
     const handleColor=async(c)=>{
         const copiedColor= await navigator.clipboard.writeText(c)
-        toast('copied to clipboard')
+        toast.success('copied to clipboard')
     }
 
 
@@ -69,4 +70,4 @@ h5{
 
 
 
-export default Color
+export default memo(Color)

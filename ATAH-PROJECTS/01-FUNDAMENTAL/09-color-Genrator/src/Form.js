@@ -7,10 +7,8 @@ import { toast } from 'react-toastify'
 
 const Form = () => {
     
-    const [color, setColor] = useState('#af4d31');
+    const [color, setColor] = useState('');
     const [ShadeArray, setShadeArray] = useState(new Values("#af4d31").all(10));
-
-    
 
 
 
@@ -21,9 +19,16 @@ const Form = () => {
             toast.error('Please provie hex value')
         }else{
 
-            setColor(color);
-            let newValuesOfColors=new Values(color).all(10);
-            setShadeArray(newValuesOfColors);
+            try {
+                setColor(color);
+                let newValuesOfColors=new Values(color).all(10);
+                setShadeArray(newValuesOfColors);
+                
+            } catch (error) {
+                toast.error(error.message)
+                console.log(error);
+            }
+
         }
 
         
