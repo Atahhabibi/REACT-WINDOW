@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {links,social} from './data'
 import logo from './assets/logo.svg';
 import { FaBars, FaFacebook } from 'react-icons/fa';
@@ -10,10 +10,10 @@ function App() {
   
   const handleNav=()=>{
     setIsOpen(!isOpen);
+
     const navLinkscontainerDOM=document.querySelector('.links-container');
     const navLinksDOM=document.querySelector('.links');
     const navLinksHeight=navLinksDOM.getBoundingClientRect().height;
-
     if(isOpen){
       navLinkscontainerDOM.style.height=`${navLinksHeight}px`
     }else{
@@ -21,6 +21,7 @@ function App() {
     }
 
   }
+
 
   return <Wrapper>
 
@@ -69,59 +70,23 @@ function App() {
 
 
 const Wrapper=styled.section`
-:root{
-    --primary-100: #c5e5fc;
-    --primary-200: #a5d5f8;
-    --primary-300: #8bcbf9;
-    --primary-400: #6ebef7;
-    --primary-500: #49a6e9;
-    --primary-600: #2d87c8;
-    --primary-700: #1a6aa2;
-    --primary-800: #104e7a;
-    --primary-900: #063251;
-    --grey-50: #f8fafc;
-    --grey-100: #f1f5f9;
-    --grey-200: #e2e8f0;
-    --grey-300: #cbd5e1;
-    --grey-400: #94a3b8;
-    --grey-500: #64748b;
-    --grey-600: #475569;
-    --grey-700: #334155;
-    --grey-800: #1e293b;
-    --grey-900: #0f172a;
-    --black: #222;
-    --white: #fff;
-    --red-light: #f8d7da;
-    --red-dark: #842029;
-    --green-light: #d1e7dd;
-    --green-dark: #0f5132;
-    --small-text: .875rem;
-    --extra-small-text: .7em;
-    --backgroundColor: var(--grey-50);
-    --textColor: var(--grey-900);
-    --borderRadius: .25rem;
-    --letterSpacing: 1px;
-    --transition: .3s ease-in-out all;
-    --max-width: 1120px;
-    --fixed-width: 600px;
-    --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-    --shadow-2: 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -1px rgba(0, 0, 0, .06);
-    --shadow-3: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05);
-    --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, .1), 0 10px 10px -5px rgba(0, 0, 0, .04);
-}
 
 .nav-header{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding:0.5rem 1rem;
+  padding:0.7rem 1rem;
   box-shadow:var(--shadow-1);
-  background-color: var(--grey-300);
+  background-color: var(--grey-100);
+
+  img{
+    width:11rem;
+  }
   
 }
 
 .nav-toggle{
-  font-size:2rem;
+  font-size:1.5rem;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -133,7 +98,7 @@ const Wrapper=styled.section`
 }
 
 .links-container{
-  height: 0;
+  height:0;
   overflow: hidden;
   background-color: var(--grey-200);
   transition: var(--transition);
@@ -141,7 +106,7 @@ const Wrapper=styled.section`
 .link a{
   display: block;
   text-transform: capitalize;
-  font-size:1.5rem;
+  font-size:1.2rem;
   margin-left:0.8rem;
   color:var(--primary-900);
   letter-spacing:1px;
@@ -166,44 +131,87 @@ const Wrapper=styled.section`
 
 @media screen and (min-width:800px) {
 
+  background-color: var(--grey-200);
+  box-shadow: var(--shadow-4);
+
+
   .navbar{
     display: flex;
     justify-content: space-between;
-    border: 2px solid red;
+    align-items: center;
+    padding:0.6rem 1rem;
   }
+
 
   .nav-header{
    display:block;
    padding:0;
    box-shadow:none;
    background-color:transparent;
+
+  }
+
+  img{
+    width:12rem;
   }
 
 .links-container{
-    height: auto;
-    overflow: visible;
+   height:auto !important;
+   overflow: visible;
+   background-color: transparent;
+
+ .links{
+    padding: 0;
+   }
+
+
+ .link {
+   display: inline-block;
+   &:hover{
+    background: transparent;
+   }
+
+ 
+  }
+
 
 .link a{
-  display: block;
-  text-transform: capitalize;
+  display:inline;
   font-size:1rem;
-  margin-left:0rem;
-  color:var(--primary-900);
   letter-spacing:1px;
-  padding: 0.3rem 0;
+  color:var(--primary-900);
+  transition: var(--transition);
+ 
+  &:hover{
+    background-color: none;
+    margin-left:0.8rem;
+    color:green;
+    font-weight: bold;
+  }
+
+
 }
   
-
     
   }
 
 
-  
-
-
-
   .socials{
-    display: block;
+    display:flex;
+    column-gap:1.1rem;
+  }
+
+  .social{
+    font-size:1.2rem;
+    color:green;
+    background-color:transparent;
+    border: transparent;
+    cursor: pointer;
+
+    a{
+      color: green;
+    }
+   
   }
 
   .nav-toggle{
