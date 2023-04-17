@@ -11,13 +11,16 @@ import Sublinks from './Sublinks'
 const Navbar = ({sublinks}) => {
 
     const [showSidebar, setShowSidebar] = useState(false);
-    const [pageName, setPageName] = useState('kaka');
+    const [showSubMenu, setShowSubMenu] = useState(false)
+    const [pageName, setPageName] = useState('');
     const [newSublink, setNewSublink] = useState([]);
     const navOverlay=useRef(null);
     const arrowRef=useRef(null);
     const linksContainerRef=useRef(null);
 
     const handlePage=(e)=>{
+
+        setShowSubMenu(true);
         
         const pageValue=e.currentTarget.dataset.id;
 
@@ -55,7 +58,7 @@ const Navbar = ({sublinks}) => {
 
   return <div className='section-center'>
 
-          <div className="nav-overlay" ref={navOverlay}>
+          <div className={`${showSubMenu?'nav-overlay show-overlay':'nav-overlay'}`} ref={navOverlay}>
 
               <span className='arrow-up' ref={arrowRef}></span>
               {
@@ -79,7 +82,7 @@ const Navbar = ({sublinks}) => {
               {
                   sublinks.map((item)=>{
                       const {page}=item;
-                      return <button key={page} data-id={page} onMouseEnter={handlePage}><a href='#' >{page}</a></button>
+                      return <button key={page} data-id={page} onMouseEnter={handlePage} onMouseLeave={()=>setShowSubMenu(false)}><a href='#' >{page}</a></button>
                   })
               }
           </ul>
@@ -98,9 +101,9 @@ const Wrapper=styled.div`
 
 padding: 1rem 0;
 
-
 .links{
     display: none;
+    width: fit-content;
 }
 
 .sign-btn{

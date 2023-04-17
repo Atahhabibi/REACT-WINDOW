@@ -12,6 +12,10 @@ const Sublinks = ({page,links,linksContainerRef}) => {
         tempClass='links-container col-4';
     }
 
+    if(links.length===2){
+        tempClass='links-container';
+    }
+
 
   
   return <Wrapper>
@@ -39,6 +43,7 @@ const Sublinks = ({page,links,linksContainerRef}) => {
 
 const Wrapper=styled.article`
 margin-bottom:3rem;
+
 
 .title{
     margin-bottom:1rem;
