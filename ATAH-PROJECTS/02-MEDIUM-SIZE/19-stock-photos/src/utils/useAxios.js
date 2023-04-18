@@ -1,11 +1,12 @@
-import axios from 'axios';
 import { useState,useEffect } from 'react';
+import customFetch from './customFetch';
 
 const useAxios =(url) => {
 
     const[isLoading,setIsLoading]=useState(true);
     const[isError,setIsError]=useState(false);
     const[data,setData]=useState(null);
+    const[fullResponse,setFullResponse]=useState(null);
 
 
     const fetchData=async()=>{
@@ -13,7 +14,8 @@ const useAxios =(url) => {
         
        try {
 
-        const response=await axios(url);
+        const response=await customFetch(url);
+        setFullResponse(response)
         setIsLoading(false)
         setData(response.data);
         setIsError(false)
@@ -32,7 +34,7 @@ const useAxios =(url) => {
     },[url])
 
    
-   return {isLoading,isError,data};
+   return {isLoading,isError,data,fullResponse};
 
 }
 

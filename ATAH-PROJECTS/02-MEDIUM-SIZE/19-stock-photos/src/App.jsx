@@ -1,16 +1,32 @@
-const mainUrl = `https://api.unsplash.com/photos/`
-const searchUrl = `https://api.unsplash.com/search/photos/`
-
-const ACCESS_KEY=process.env.REACT_APP_API_ACCESS_KEY;
-const SECRET_KEY=process.env.REACT_APP_API_SECRET_KEY;
-
+import PhotosContainer from "./PhotosContainer";
+import { useAppContext } from "./appContext";
+import Error from "./utils/Error";
+import Loading from "./utils/Loading";
 
 
 function App() {
 
-  return <div>
-    <h1>App Components</h1>
-  </div>
+  const {isError,isLoading,theme}=useAppContext();
+
+  if(isLoading){
+    return <Loading />
+  }
+
+  if(isError){
+    return <Error />
+  }
+
+
+  return <main style={theme?{background:'black'}:{background:'var(--primary-300)'}}>
+
+    <div className="section-center">
+
+      <PhotosContainer/>
+
+    </div>
+
+
+  </main>
 }
 
 export default App

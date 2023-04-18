@@ -4,9 +4,6 @@ Global css
 ================
 */
 
-@import url('https://fonts.googleapis.com/css?family=Karla:400|Spectral:400');
-@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@500;600;700;800&display=swap');
 
 *,::after,::before{
   padding: 0;
@@ -21,15 +18,15 @@ html {font-size: 100%;
 
 :root {
     /* colors */
-    --primary-100: #c5b8f3;
-    --primary-200: #cfc6f2;
-    --primary-300: #a794ec;
-    --primary-400: #9982e9;
-    --primary-500: #6041d2;
-    --primary-600: #8067db;
-    --primary-700: #7054d7;
-    --primary-800: #6041d2;
-    --primary-900: #412e86;
+    --primary-100:#ecc5c5;
+    --primary-200: #e6b2b2;
+    --primary-300: #e09f9f;
+    --primary-400: #da8b8b;
+    --primary-500: #d47878;
+    --primary-600: #742525;
+    --primary-700: #611f1f;
+    --primary-800: #4d1919;
+    --primary-900: #3a1313;
 
     /* grey */
     --grey-50: #f8fafc;
@@ -207,7 +204,7 @@ ul{
 }
 
 body{
-    background:var(--primary-700);
+    background:var(--primary-300);
 
 }
 
@@ -218,7 +215,9 @@ NEW PROJECTS GLOBAL
 ========================
 */
 
-
+main{
+    min-height: 100vh;
+}
 
 
 
