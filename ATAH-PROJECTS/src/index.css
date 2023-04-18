@@ -4,9 +4,6 @@ Global css
 ================
 */
 
-@import url('https://fonts.googleapis.com/css?family=Karla:400|Spectral:400');
-@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@500;600;700;800&display=swap');
 
 *,::after,::before{
   padding: 0;
