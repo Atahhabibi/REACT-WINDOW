@@ -18,7 +18,7 @@ const Color = (prop) => {
   
 
     const handleColor=async(c)=>{
-        const copiedColor= await navigator.clipboard.writeText(c)
+        await navigator.clipboard.writeText(c)
         toast.success('copied to clipboard')
     }
 

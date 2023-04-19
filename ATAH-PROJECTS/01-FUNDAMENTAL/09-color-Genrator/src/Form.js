@@ -1,6 +1,6 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { useState,useEffect} from 'react'
+import { useState} from 'react'
 import Values from 'values.js'
 import ColorsList from './ColorsList'
 import { toast } from 'react-toastify'
@@ -8,7 +8,7 @@ import { toast } from 'react-toastify'
 const Form = () => {
     
     const [color, setColor] = useState('');
-    const [ShadeArray, setShadeArray] = useState(new Values("#af4d31").all(10));
+    const [ShadeArray, setShadeArray] = useState(new Values("#af4d31").all(20));
 
 
 
@@ -21,7 +21,7 @@ const Form = () => {
 
             try {
                 setColor(color);
-                let newValuesOfColors=new Values(color).all(10);
+                let newValuesOfColors=new Values(color).all(20);
                 setShadeArray(newValuesOfColors);
                 
             } catch (error) {
@@ -73,6 +73,7 @@ form{
     max-width:40rem;
     margin-left:2rem;
     margin: 0 auto;
+  
 }
 
 label{
@@ -119,6 +120,7 @@ button{
     form{
         display:flex;
         margin-left:2rem;
+       max-width:50rem;
     }
 
     .input-text,button{
@@ -128,6 +130,7 @@ button{
 
      label{
          font-size:1.8rem;
+         font-weight: bold;
      }
 
      .input-color{
