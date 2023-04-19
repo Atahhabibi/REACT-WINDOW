@@ -1,13 +1,21 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 
-const Footer = () => {
+const PageNavigate = ({title,isProduct=false}) => {
   return <Wrapper>
 
-    <div className="section-center">
-      <h5 className="footer-info">&copy; {new Date().getFullYear()}<span className="name"> comfy-sloth </span> All rights reserved </h5>
-    </div>
+    <h5 className="main-nav">
+        
+        <button className="title-btn"><Link to='/' className="Link">Home</Link></button>
 
+        {isProduct && <button className="title-btn"><Link to='/products' className="Link">/ products</Link></button>}
+        
+        
+        /<span className="prop-name">{title}</span></h5>
+
+  
+    
 
   </Wrapper>
 }
@@ -65,30 +73,56 @@ const Wrapper=styled.div`
         0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-background-color:var(--primary-900);
-color: white;
 
-.section-center{
-  padding:2rem 1rem;
-  display: grid;
-  place-items: center;
+background:var(--primary-200);
+padding:2rem;
+
+
+.title-btn{
+    font-size:1rem;
+    border: transparent;
+    background:transparent;
+    margin-right:0.5rem;
+    font-weight: bold;
+
+    .Link{
+        color:var(--primary-700);
+        font-weight: bold;
+    }
 }
 
-.footer-info{
-  font-size:0.8rem;
-
-  .name{
-    color: var(--primary-500);
-  }
+.main-nav{
+    font-size:1rem;
+    font-weight: bold;
 }
 
 
+.prop-name{
+    margin-left:0.5rem;
+}
 
 @media screen and (min-width:600px){
 
-  .footer-info{
-    font-size:1rem;
-  }
+    .main-nav{
+        font-size:1.4rem;
+    }
+
+    .title-btn{
+        font-size: 1.4rem;
+    }
+  
+}
+@media screen and (min-width:900px){
+
+    padding:2rem 4rem;
+
+    .main-nav{
+        font-size:1.6rem;
+    }
+
+    .title-btn{
+        font-size: 1.6rem;
+    }
   
 }
 
@@ -96,4 +130,4 @@ color: white;
     
 `
 
-export default Footer
+export default PageNavigate

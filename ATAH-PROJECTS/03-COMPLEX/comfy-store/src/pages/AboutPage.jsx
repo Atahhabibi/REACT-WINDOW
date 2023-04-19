@@ -1,16 +1,23 @@
 import styled from "styled-components"
+import { PageNavigate } from "../components"
 
 
 const AboutPage = () => {
   return <Wrapper>
 
-        <h2>AboutPage</h2>
+         <PageNavigate title="about"/>
+
+        <div className="section-center">
+
+        </div>
 
 
   </Wrapper>
 }
 
 const Wrapper=styled.div`
+
+min-height:77vh;
     
 `
 

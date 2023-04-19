@@ -1,5 +1,6 @@
 import styled from "styled-components"
-import {PageHero,Featured} from '../components'
+import {PageHero,Featured, Service} from '../components'
+import NewsLetter from "../components/NewsLetter"
 
 
 const HomePage = () => {
@@ -7,6 +8,8 @@ const HomePage = () => {
 
     <PageHero/>
     <Featured/>
+    <Service/>
+    <NewsLetter/>
 
       
 
