@@ -233,6 +233,17 @@ NEW PROJECTS GLOBAL
     color: var(--primary-700);
 }
 
+.Link-btn{
+    color: white;
+}
+
+.Link-btn:hover{
+    color:black;
+}
+
+
+
+
 
 
 

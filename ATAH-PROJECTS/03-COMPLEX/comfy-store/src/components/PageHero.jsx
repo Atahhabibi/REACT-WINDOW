@@ -108,7 +108,7 @@ place-items: center;
 
 .btn-primary{
     margin-top:1rem;
-    ;
+    display: inline;
 }
 
 .image-container{
