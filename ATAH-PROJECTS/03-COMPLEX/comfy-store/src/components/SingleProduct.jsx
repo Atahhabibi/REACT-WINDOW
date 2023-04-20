@@ -84,6 +84,7 @@ overflow: hidden;
 
 
 
+
 .image-container{
     transition: var(--transition);
   
@@ -136,6 +137,7 @@ overflow: hidden;
     align-items: center;
     padding:0.8rem;
     background:var(--primary-300);
+    min-height:5rem;
 }
 
 .info-container h5{
@@ -151,6 +153,16 @@ overflow: hidden;
 }
 
 @media screen and (min-width:600px){
+
+    .img{
+        min-height:14rem;
+    }
+
+    .info-container{
+        .name,.price{
+            font-size:1.3rem;
+        }
+    }
 
     margin: 0;
   

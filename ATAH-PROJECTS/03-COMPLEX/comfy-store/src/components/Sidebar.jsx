@@ -4,16 +4,21 @@ import {MdOutlineClose} from 'react-icons/md'
 import { pageLinks } from "../utils/pageLinks"
 import { Link } from "react-router-dom"
 import ButtonContainer from "./ButtonContainer"
+import { useProductsContext } from "../context/productsContext"
 
 
 
 const Sidebar = () => {
-  return <Wrapper >
+
+    const{isSidebarOpen,closeSidebar}=useProductsContext();
+
+
+  return <Wrapper style={isSidebarOpen?{transform:'translate(0)'}:null}>
 
    <div className="side-header">
 
     <img src={logo} alt="comfy-sloth" className="side-logo" />
-    <button className="close-btn"><MdOutlineClose/></button>
+    <button className="close-btn" onClick={closeSidebar}><MdOutlineClose/></button>
 
    </div>
 
@@ -21,11 +26,11 @@ const Sidebar = () => {
 
           {
             pageLinks.map((item)=>{
-                return <li key={item.id}><Link to={item.url}  className="link">{item.text}</Link></li>
+                return <li key={item.id} onClick={closeSidebar}><Link to={item.url}  className="link">{item.text}</Link></li>
             })
           }
 
-          <li ><Link to='/checkout' className="link">checkout</Link></li>
+          <li onClick={closeSidebar}><Link to='/checkout' className="link">checkout</Link></li>
 
     </ul>
 
@@ -152,6 +157,13 @@ transform: translate(-100%);
 .button-elements{
     text-align: center;
 }
+
+@media screen and (min-width:800px) {
+
+    display: none;
+    
+}
+
 
 
 

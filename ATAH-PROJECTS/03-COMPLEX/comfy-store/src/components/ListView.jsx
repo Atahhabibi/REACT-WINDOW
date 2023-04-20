@@ -1,56 +1,42 @@
 import styled from "styled-components"
-import {Heading} from '../components'
-import { Link } from "react-router-dom"
+import { useState } from "react"
 import { useProductsContext } from "../context/productsContext"
-import Loading from "../utils/Loading"
-import Error from "../utils/Error"
-import SingleProduct from "./SingleProduct"
+import formatPrice from "../utils/formatPrice";
 
-const Featured = () => {
+const ListView = () => {
 
-    const {featuredProducts,isError,isLoading}=useProductsContext();
-
-
-    if(isLoading){
-       return <Loading/>
-    }
-
-    if(isError){
-       return  <Error/>
-    }
-
-
-    let newFeatured=featuredProducts.slice(0,3);
-
-
+    const {products}=useProductsContext();
 
   return <Wrapper>
 
+      {
+          products.map((item)=>{
 
-    <div className="section-center">
+              const {id,name,price,image,description}=item;
+              
+             return <article className="product" key={id}>
+                 <img src={image} alt={name}  className="img"/>
 
-
-    <Heading title="Featured products"/>
-
-    <div className="featured-container">
-        {
-            newFeatured.map((item)=>{
-                return <SingleProduct key={item.id} {...item}/>
-            })
-        }
-
-    </div>
-
-    <button className="btn-primary "><Link to='/products' className="Link-btn">All products</Link></button>
+                 <div className="product-info">
+                     <h5 className="name">{name}</h5>
+                     <h5 className="price">{formatPrice(price)}</h5>
+                     <p className="prodcut-text">{description.slice(0,200)}</p>
+                     <button className="btn-primary">Details</button>
+                 </div>
 
 
-    </div>
 
+
+             </article>
+          })
+      }
+      
   </Wrapper>
 }
 
+
 const Wrapper=styled.div`
-:root {
+ :root {
     /* colors */
     --primary-100: #eee4df;
     --primary-200: #ddcabf;
@@ -100,47 +86,69 @@ const Wrapper=styled.div`
         0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
         0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}  
+
+margin:3rem 0;
+
+
+.product{
+    margin: 0 auto;
+    margin-bottom:2rem;
+    text-align: center;
+    border: 2px solid white;
+    border-radius:5px;
+    outline:4px solid var(--primary-200);
+    max-width:50rem;
 }
 
-padding:3rem 0;
-background-color:var(--grey-200);
+.name{
+    margin-top:1rem;
+    font-weight: bold;
+    letter-spacing:2px;
+    margin-bottom:0.5rem;
+}
+.price{
+    margin-bottom:1rem;
+    color: var(--primary-600);
+    font-weight: bold;
+}
 
+.img{
+    height:14rem;
+}
 
-.featured-container{
-    margin-bottom:2rem;
+.prodcut-text{
+    color:var(--grey-800);
+    color: grey;
 }
 
 .btn-primary{
-    display: block;
-    margin:0 auto;
-    margin-top:1rem;
+    margin:1rem 0;
 }
 
 
-@media screen and (min-width:600px){
 
-    .featured-container{
-        display: grid;
-        grid-template-columns: 1fr 1fr ;
-        gap:2rem;
+@media screen and (min-width:1100px) {
+
+    .product{
+        display:grid;
+        grid-template-columns: 1fr 2fr;
+        column-gap:1rem;
+        max-width: none;
+        
     }
-    
-    
-  
-}
 
-@media screen and (min-width:900px){
-
-    .featured-container{
-        grid-template-columns: 1fr 1fr 1fr;
-        margin:4rem 0;
+    .img{
+        height:18rem;
+        min-height: 100%;
+        width:20rem;
     }
-    
-
-  
 }
 
-    
+
+
+
+
 `
 
-export default Featured
+export default ListView;

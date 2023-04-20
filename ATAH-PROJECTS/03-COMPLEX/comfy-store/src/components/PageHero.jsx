@@ -154,6 +154,14 @@ place-items: center;
 
     }
 
+    .home-title{
+        font-size:3.4rem;
+    }
+
+    .info{
+        font-size:1.2rem;
+    }
+
     
 
     grid-template-columns: 1fr 2fr;

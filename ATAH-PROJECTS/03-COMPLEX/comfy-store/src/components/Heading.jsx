@@ -68,7 +68,7 @@ const Wrapper=styled.div`
 margin-bottom:2rem;
 
 .heading-title{
-    font-size:1.5rem;
+    font-size:2rem;
     font-weight: bold;
     text-align: center;
 }
@@ -84,7 +84,7 @@ margin-bottom:2rem;
 @media screen and (min-width:800px){
 
     .heading-title{
-        font-size:2rem;
+        font-size:3rem;
     }
   
 }

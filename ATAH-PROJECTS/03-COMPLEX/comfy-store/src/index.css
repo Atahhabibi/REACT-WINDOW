@@ -242,6 +242,14 @@ NEW PROJECTS GLOBAL
 }
 
 
+@media screen and (min-width:1000px) {
+
+    .btn-primary{
+        font-size:1.3rem;
+    }
+    
+}
+
 
 
 

@@ -87,7 +87,7 @@ color: white;
 @media screen and (min-width:600px){
 
   .footer-info{
-    font-size:1rem;
+    font-size:1.5rem;
   }
   
 }

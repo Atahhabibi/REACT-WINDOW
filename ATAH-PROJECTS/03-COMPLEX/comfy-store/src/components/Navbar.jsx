@@ -4,13 +4,17 @@ import {FaBars} from 'react-icons/fa'
 import { Link } from "react-router-dom"
 import { pageLinks } from "../utils/pageLinks"
 import ButtonContainer from "./ButtonContainer"
+import { useProductsContext } from "../context/productsContext"
 
 const Navbar = () => {
+
+    const {openSidebar}=useProductsContext();
+
   return <Wrapper className="section-center">
 
         <div className="nav-header">
               <img src={logo} alt="comfy-sloth"  className="logo"/>
-             <button className="toggle-btn"><FaBars/></button>
+             <button className="toggle-btn" onClick={openSidebar}><FaBars/></button>
         </div>
 
         <ul className="page-links">

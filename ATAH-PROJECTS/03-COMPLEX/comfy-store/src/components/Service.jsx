@@ -172,8 +172,31 @@ padding:3rem 0;
 
 @media screen and (min-width:900px){
 
+    .section-center{
+        padding:2rem 0;
+    }
+
     .article-container{
         grid-template-columns:1fr 1fr 1fr;
+
+        .name{
+            font-size:1.6rem;
+        }
+
+        .article-text{
+            font-size:1.3rem;
+        }
+    }
+
+    .service-title{
+        font-size:2.5rem;
+    }
+
+    .title-container{
+        .text{
+        font-size:1.3rem;
+        color:var(--primary-700);
+        }
     }
 
 

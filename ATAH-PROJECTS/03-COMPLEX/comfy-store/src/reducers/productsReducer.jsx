@@ -1,4 +1,4 @@
-import { LOAD_PRODUCTS_BEGIN, LOAD_PRODUCTS_FAIL, LOAD_PRODUCTS_SUCCESS } from "./action";
+import { CLOSE_SIDEBAR, LOAD_PRODUCTS_BEGIN, LOAD_PRODUCTS_FAIL, LOAD_PRODUCTS_SUCCESS, OPEN_SIDEBAR } from "./action";
 
 
 const reducer=(state,action)=>{
@@ -20,6 +20,19 @@ const reducer=(state,action)=>{
         let filterFeatured=action.payload.filter((item)=>item.featured);
 
         return {...state,isLoading:false,isError:false,products:action.payload,featuredProducts:filterFeatured}
+
+    }
+
+      
+    if(action.type===OPEN_SIDEBAR){
+
+        return {...state,isSidebarOpen:true}
+
+    }
+    
+    if(action.type===CLOSE_SIDEBAR){
+
+        return {...state,isSidebarOpen:false}
 
     }
     

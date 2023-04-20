@@ -22,6 +22,7 @@ function App() {
       <Route path="checkout" element={<PrivatePage><CheckoutPage/></PrivatePage>} />
       <Route path="products" element={<ProductsPage/>}/>
       <Route path="products/:id" element={<SingleProductsPage/>}/>
+      <Route path="products/products/:id" element={<SingleProductsPage/>}/>
       <Route path="*" element={<ErrorPage/>}/>
      
 

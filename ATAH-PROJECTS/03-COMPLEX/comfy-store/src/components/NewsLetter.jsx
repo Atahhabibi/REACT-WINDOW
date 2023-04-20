@@ -126,14 +126,22 @@ form{
 @media screen and (min-width:1000px){
 
 
+    padding:4rem 0;
+
     .info-container{
-        max-width:40rem;
+        max-width:50rem;
+
+        .title{
+            font-size:1.8rem;
+        }
+        
     }
 
     form{
         margin: 0 auto;
         input{
-            width:15rem;
+            width:17rem;
+            font-size:1.4rem;
         }
     }
 

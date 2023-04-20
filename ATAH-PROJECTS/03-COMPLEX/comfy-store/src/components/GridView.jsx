@@ -1,56 +1,29 @@
 import styled from "styled-components"
-import {Heading} from '../components'
-import { Link } from "react-router-dom"
-import { useProductsContext } from "../context/productsContext"
-import Loading from "../utils/Loading"
-import Error from "../utils/Error"
-import SingleProduct from "./SingleProduct"
+import { useProductsContext } from "../context/productsContext";
+import SingleProduct from "./SingleProduct";
 
-const Featured = () => {
+const GridView = () => {
 
-    const {featuredProducts,isError,isLoading}=useProductsContext();
-
-
-    if(isLoading){
-       return <Loading/>
-    }
-
-    if(isError){
-       return  <Error/>
-    }
-
-
-    let newFeatured=featuredProducts.slice(0,3);
-
-
+    const {products}=useProductsContext();
 
   return <Wrapper>
 
+      {
+          products.map((item)=>{
+              return <SingleProduct key={item.id} {...item}/>
+          })
+      }
 
-    <div className="section-center">
-
-
-    <Heading title="Featured products"/>
-
-    <div className="featured-container">
-        {
-            newFeatured.map((item)=>{
-                return <SingleProduct key={item.id} {...item}/>
-            })
-        }
-
-    </div>
-
-    <button className="btn-primary "><Link to='/products' className="Link-btn">All products</Link></button>
+      
 
 
-    </div>
 
   </Wrapper>
 }
 
+
 const Wrapper=styled.div`
-:root {
+  :root {
     /* colors */
     --primary-100: #eee4df;
     --primary-200: #ddcabf;
@@ -100,47 +73,29 @@ const Wrapper=styled.div`
         0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
         0 10px 10px -5px rgba(0, 0, 0, 0.04);
+} 
+
+
+
+.img{
+    min-height: 100%;
 }
 
-padding:3rem 0;
-background-color:var(--grey-200);
-
-
-.featured-container{
-    margin-bottom:2rem;
-}
-
-.btn-primary{
-    display: block;
-    margin:0 auto;
-    margin-top:1rem;
+@media screen and (min-width:600px) {
+   display: grid;
+   grid-template-columns:1fr 1fr;
+   gap:2rem;
 }
 
 
-@media screen and (min-width:600px){
 
-    .featured-container{
-        display: grid;
-        grid-template-columns: 1fr 1fr ;
-        gap:2rem;
-    }
-    
-    
-  
-}
 
-@media screen and (min-width:900px){
 
-    .featured-container{
-        grid-template-columns: 1fr 1fr 1fr;
-        margin:4rem 0;
-    }
-    
 
-  
-}
 
-    
+
+
+
 `
 
-export default Featured
+export default GridView;

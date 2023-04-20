@@ -1,7 +1,9 @@
+import { useParams } from "react-router-dom"
 import styled from "styled-components"
 
 
 const SingleProductsPage = () => {
+
   return <Wrapper>
 
         <h2>SingleProductsPage</h2>
