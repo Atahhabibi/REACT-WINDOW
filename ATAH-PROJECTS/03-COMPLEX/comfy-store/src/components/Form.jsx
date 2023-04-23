@@ -1,7 +1,8 @@
 import styled from "styled-components"
-import { useState } from "react"
+import formatPrice from "../utils/formatPrice"
 import { useProductsContext } from "../context/productsContext"
 import getUniqueValue from "../utils/getUniqueValue"
+import {FaCheck} from 'react-icons/fa'
 
 const Form = () => {
 
@@ -15,12 +16,15 @@ const Form = () => {
     companies=getUniqueValue(companies,'company');
     colors=getUniqueValue(colors,'colors');
 
+    const {handleForm,filters:{maxPrice,price,search,category,shipping,color},clearFilters}=useProductsContext();
+
+
   return <Wrapper>
 
-      <form>
+      <form  onSubmit={(e)=>{e.preventDefault()}}>
 
           <div className="form-control">
-              <input type="text" placeholder="search" className="search-input"/>
+              <input type="text" placeholder="search" className="search-input" onChange={handleForm} name="search" value={search}/>
           </div>
 
           <div className="form-control">
@@ -29,7 +33,7 @@ const Form = () => {
              <div className="category-container">
                 {
                 categories.map((item)=>{
-                    return <button className="category-btn" key={item}>{item}</button>
+                    return <button className={category===item?`category-btn active-category`:'category-btn'} key={item} name="category" data-id={item} onClick={handleForm}>{item}</button>
                 })
                 }
              </div>
@@ -39,10 +43,10 @@ const Form = () => {
           <div className="form-control">
              <h5 className="form-title">company</h5>
 
-             <select className="company-container">
+             <select className="company-container" onChange={handleForm} name="company">
                  {
                      companies.map((item)=>{
-                         return <option value={item} className="company-option" key={item}>{item}</option>
+                         return <option value={item} className="company-option" key={item} >{item}</option>
                      })
                  }
                
@@ -57,9 +61,9 @@ const Form = () => {
                  {
                      colors.map((item)=>{
                          if(item==='all'){
-                             return <button key={item} className="all-btn">all</button>
+                             return <button key={item} className={item===color?'all-btn active-color':'all-btn'} name="color" onClick={handleForm} data-id="all">all</button>
                          }
-                         return <button  className="color-btn" key={item} style={{background:item}}></button>
+                         return <button  className={color===item?'color-btn active-btn':'color-btn'} key={item} style={{background:item}} onClick={handleForm} name="color" data-id={item}>{color===item?<FaCheck />:null}</button>
                      })
                  }
                
@@ -72,8 +76,8 @@ const Form = () => {
              <h5 className="form-title">price</h5>
 
              <div className="price-container">
-                  <h5 className="price-value">$30000.99</h5>
-                 <input type="range" name="range" id="range" max={9000} min={0}/>
+                  <h5 className="price-value">{formatPrice(price)}</h5>
+                 <input type="range" name="price" id="range" max={maxPrice} min={0} onChange={handleForm} value={price}/>
              </div>
 
           </div>
@@ -83,7 +87,7 @@ const Form = () => {
 
              <div className="shipping-container">
                  <label htmlFor="shipping" className="shipping-label">Free shipping </label>
-                 <input type="checkbox" id="shipping" className="shipping-input"/>
+                 <input type="checkbox" id="shipping"  name="shipping"  onChange={handleForm}/>
              </div>
 
           </div>
@@ -91,7 +95,7 @@ const Form = () => {
 
       </form>
 
-      <button className="clear-btn btn-block">clear Filters</button>
+      <button className="clear-btn btn-block" onClick={clearFilters}>clear Filters</button>
 
 
       
@@ -208,6 +212,12 @@ background:var(--primary-400);
     }
 }
 
+.active-category{
+    background:var(--primary-700);
+    color: white;
+   
+}
+
 
 .company-container{
     text-align: center;
@@ -234,8 +244,27 @@ background:var(--primary-400);
         cursor: pointer;
         background:transparent;
         color: white;
+        
     }
+
+    .active-color{
+        border-bottom:3px solid var(--primary-900);
+     }
+
+
+    svg{
+        font-size:1.3rem;
+        color: white;
+        opacity:1;
+        
+    }
+
+
+
+
+    
 }
+
 
 
 .color-btn{
@@ -244,6 +273,11 @@ background:var(--primary-400);
     border-radius:50%;
     border: transparent;
     cursor: pointer;
+    opacity:0.4;
+}
+
+.active-btn{
+    opacity: 1;
 }
 
 .price-container{
@@ -257,10 +291,12 @@ background:var(--primary-400);
 .shipping-label{
     font-size:1.1rem;
     margin-right:1rem;
+    cursor: pointer;
+    
 }
 
 .shipping-input{
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .clear-btn{
@@ -286,7 +322,8 @@ background:var(--primary-400);
 
     position:sticky;
     top:25px;
-    
+
+ 
 }
 
 

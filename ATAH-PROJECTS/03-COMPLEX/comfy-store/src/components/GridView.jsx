@@ -4,12 +4,21 @@ import SingleProduct from "./SingleProduct";
 
 const GridView = () => {
 
-    const {products}=useProductsContext();
+    const {filteredProducts,gridView}=useProductsContext();;
+
+
+    if(filteredProducts.length<1){
+        return <Wrapper>
+
+            <h4>Sorry, no match found your search</h4>
+
+        </Wrapper>
+    }
 
   return <Wrapper>
 
       {
-          products.map((item)=>{
+          filteredProducts.map((item)=>{
               return <SingleProduct key={item.id} {...item}/>
           })
       }

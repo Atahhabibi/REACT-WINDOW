@@ -5,12 +5,22 @@ import formatPrice from "../utils/formatPrice";
 
 const ListView = () => {
 
-    const {products}=useProductsContext();
+    const {filteredProducts}=useProductsContext();
+
+
+    if(filteredProducts.length<1){
+        return <Wrapper>
+
+            <h3>Sorry,no match found your search</h3>
+
+        </Wrapper>
+    }
+   
 
   return <Wrapper>
 
       {
-          products.map((item)=>{
+          filteredProducts.map((item)=>{
 
               const {id,name,price,image,description}=item;
               

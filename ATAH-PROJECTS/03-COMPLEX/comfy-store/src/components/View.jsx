@@ -5,29 +5,31 @@ import { useProductsContext } from "../context/productsContext"
 
 const View = () => {
 
-    const {products}=useProductsContext();
+    const {filteredProducts,changeView,gridView,handleForm}=useProductsContext();
+
 
 
   return <Wrapper>
 
       <div className="btn-container">
-          <button className="active"><HiOutlineViewGrid/></button>
-         <button><HiOutlineViewList/></button>
+          <button className={gridView?'active':null} onClick={changeView}><HiOutlineViewGrid/></button>
+         <button className={ gridView?null:'active'} onClick={changeView}><HiOutlineViewList/></button>
       </div>
 
 
-      <p className="found">{products.length} Products found </p> 
+      <p className="found">{filteredProducts.length} Products found </p> 
 
 
       <div className="sort-container">
 
       <span className="sort-by">sort by</span>
-      <select className="price-sort">
 
-          <option value="price (Lowest)">price (Lowest)</option>
-          <option value="price (Highest)">price (Highest)</option>
-          <option value="Name (A-Z)">Name (A-Z)</option>
-          <option value="Name (Z-A)">Name (Z-A)</option>
+      <select className="price-sort" onChange={handleForm} name="sort">
+
+          <option value="Price(Lowest)">Price (Lowest)</option>
+          <option value="Price(Highest)">Price (Highest)</option>
+          <option value="Name(A-Z)">Name (A-Z)</option>
+          <option value="Name(Z-A)">Name (Z-A)</option>
 
       </select>
 
@@ -137,7 +139,11 @@ border-radius:5px;
 .sort-by{
     text-transform: capitalize;
     font-size:1.3rem;
-    margin-right:0.5rem;
+    margin-right:0.5rem; 
+}
+
+option{
+    text-transform: capitalize;
 }
 
 @media screen and (min-width:800px) {

@@ -11,6 +11,11 @@ import View from './View';
 import ProductsResults from './ProductsResults';
 import GridView from './GridView';
 import ListView from './ListView';
+import CartItem from './CartItem';
+import Stars from './Stars';
+import IncDec from './IncDec';
+import Colors from './Colors';
+import TotalContainer from './TotalConatiner';
 
 
-export {Navbar,Footer,Sidebar,PageHero,Heading,Featured,Service,PageNavigate,Form,View,ProductsResults,ListView,GridView}
+export {Navbar,Footer,Sidebar,PageHero,Heading,Featured,Service,PageNavigate,Form,View,ProductsResults,ListView,GridView,CartItem,Stars,IncDec,Colors,TotalContainer}

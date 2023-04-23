@@ -1,11 +1,18 @@
 import styled from "styled-components"
 import {FaShoppingCart,FaUserPlus,FaUserMinus} from 'react-icons/fa'
+import { Link } from "react-router-dom"
+import { useCartContext } from "../context/cartContext"
+import { useProductsContext } from "../context/productsContext"
 
 
 const ButtonContainer = () => {
+
+  const {totalItems}=useCartContext();
+  const {closeSidebar}=useProductsContext();
+
   return <Wrapper>
 
-    <button className="cart-btn">cart <FaShoppingCart/><span className="items">5</span></button>
+    <button className="cart-btn" onClick={closeSidebar}><Link to='/cart' className="cart-link">cart <FaShoppingCart/></Link> <span className="items">{totalItems}</span></button>
     <button >Login <FaUserPlus/></button>
     {/* <button>Logout <FaUserMinus/></button> */}
 
@@ -75,6 +82,10 @@ button{
     text-transform: capitalize;
     /* font-weight:600; */
     cursor: pointer;
+}
+
+.cart-link{
+    color:black;
 }
 
 .cart-btn{

@@ -2,16 +2,20 @@ import styled from "styled-components"
 import {AiOutlineSearch} from 'react-icons/ai'
 import { Link } from "react-router-dom";
 import formatPrice from "../utils/formatPrice";
+import { useCartContext } from "../context/cartContext";
 
 
 
 const SingleProduct = ({id,name,price,image}) => {
+
+    const {getId}=useCartContext();
+
   return <Wrapper>
 
 
     <div className="image-container">
         <img src={image} alt={name} className="img"/>
-        <button className="search-btn"><Link to={`products/:${id}`} className="link"><AiOutlineSearch/></Link></button>
+        <button className="search-btn" onClick={()=>getId(id)}><Link to={`products/:${id}`} className="link"><AiOutlineSearch/></Link></button>
     </div>
 
     
@@ -102,7 +106,7 @@ overflow: hidden;
 }
 
 .img{
-    max-height:10rem;
+    max-height:11rem;
     transition:var(--transition);
 }
 
@@ -110,13 +114,14 @@ overflow: hidden;
  position: absolute;
  top:50%;
  left:50%;
- transform: translate(-50%,-70%);
+ transform: translate(-50%,-110%);
  border: transparent;
  background:var(--primary-600);
  font-size:1.5rem;
  border-radius: 50%;
- height:2rem;
- width:2rem;
+ height:3rem;
+ width:3rem;
+
 
  display: none;
 
