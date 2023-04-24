@@ -29,13 +29,13 @@ const SingleProduct = ({id,name,price,image}) => {
 
 const Wrapper=styled.div`
 
-max-height:25rem;
-
 margin:2rem 0;
 background:var(--primary-900);
 border-radius:8px;
 position: relative;
 overflow: hidden;
+
+min-width:18rem;
 
 
 
@@ -57,8 +57,8 @@ overflow: hidden;
 }
 
 .single-img{
-    max-height:14rem;
-    min-height:16rem;
+    max-height:10rem;
+    min-height:10rem;
     transition:var(--transition);
 }
 
@@ -94,7 +94,7 @@ overflow: hidden;
     align-items: center;
     padding:0.8rem;
     background:var(--primary-300);
-    min-height:5rem;
+    min-height:2rem;
 }
 
 .info-container h5{
@@ -114,7 +114,7 @@ overflow: hidden;
 
     .info-container{
         .name,.price{
-            font-size:1.3rem;
+            font-size:1rem;
         }
     }
 
