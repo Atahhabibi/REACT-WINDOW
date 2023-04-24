@@ -1,12 +1,9 @@
 import sublinks from './data'
 import Navbar from './Navbar'
 import phoneImg from './assets/images/phone.svg'
-import {useState} from 'react'
 
 
 function App() {
-
-  
 
 
   return <main className='main'>

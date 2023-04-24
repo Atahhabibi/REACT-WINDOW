@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState,useRef ,useEffect } from 'react'
+import { useState,useRef  } from 'react'
 import styled from 'styled-components'
 import logo from './assets/images/logo.svg'
 import {FaBars} from 'react-icons/fa'

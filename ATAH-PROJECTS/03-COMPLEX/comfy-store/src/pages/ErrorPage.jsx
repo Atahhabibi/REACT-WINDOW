@@ -16,9 +16,6 @@ const ErrorPage = () => {
 
 
 
-
-
-
 </Wrapper>
 }
 

@@ -21,15 +21,15 @@ html {font-size: 100%;
 
 :root {
     /* colors */
-    --primary-100: #e2e0ff;
-    --primary-200: #c1beff;
-    --primary-300: #a29dff;
-    --primary-400: #837dff;
-    --primary-500: #645cff;
-    --primary-600: #504acc;
-    --primary-700: #3c3799;
-    --primary-800: #282566;
-    --primary-900: #141233;
+    --primary-100: rgb(254, 243, 199);
+    --primary-200: #fde68a;
+    --primary-300: #fcd34d;
+    --primary-400: #fbbf24;
+    --primary-500: #f59e0b;
+    --primary-600: #d97706;
+    --primary-700: #b45309;
+    --primary-800: #92400e;
+    --primary-900: #78350f;
 
     /* grey */
     --grey-50: #f8fafc;
@@ -207,12 +207,8 @@ ul{
 }
 
 body{
-    background:burlywood;
+    background:#52bdcb;
 
-}
-
-h1{
-    text-align: center;
 }
 
 

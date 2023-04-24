@@ -39,13 +39,6 @@ h2{
 }
 
 
-@media screen and (min-width:800px) {
-     .img{
-       width:25rem;
-     }
-}
-
-
 
 `
 

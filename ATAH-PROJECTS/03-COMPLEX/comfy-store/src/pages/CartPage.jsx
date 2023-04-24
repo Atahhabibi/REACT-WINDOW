@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components"
-import { CartItem, Heading, PageNavigate, TotalContainer} from '../components'
+import { CartItem, PageNavigate, TotalContainer} from '../components'
 import { useCartContext } from "../context/cartContext"
 
 

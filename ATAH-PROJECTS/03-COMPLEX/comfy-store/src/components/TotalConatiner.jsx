@@ -2,10 +2,12 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 import { useCartContext } from "../context/cartContext"
 import formatPrice from "../utils/formatPrice";
+import { useUserContext } from "../context/userContext";
 
 const TotalContainer = () => {
 
   const {totalOrder,clearCart}=useCartContext();
+  const {loginWithRedirect,user}=useUserContext();
 
   return <Wrapper>
       <div className="clear-btn-container">
@@ -18,7 +20,14 @@ const TotalContainer = () => {
         <h5 className="shipping"><span >shipping fee</span><span>${5.45}</span></h5>
         <hr />
         <h4 className="order-total"><span>order total</span><span>{formatPrice(totalOrder+ 534)}</span></h4>
-       <button className="btn-primary checkout-btn"><Link to='/checkout' className="Link-btn">proceed to checkout</Link></button>
+     
+
+       {
+         user? <button className="btn-primary checkout-btn"><Link to='/checkout' className="Link-btn">proceed to checkout</Link></button>:<button onClick={loginWithRedirect} className="btn-primary checkout-btn">Login</button>
+       }
+
+       
+ 
       </div>
 
   </Wrapper>
@@ -80,6 +89,7 @@ const Wrapper=styled.div`
 .order-total{
   margin-top:1rem;
   font-weight: bold;
+  margin-bottom:1rem;
 }
 
 

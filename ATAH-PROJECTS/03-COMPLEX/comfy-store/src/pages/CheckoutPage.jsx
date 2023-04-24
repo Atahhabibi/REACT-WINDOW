@@ -2,16 +2,14 @@ import styled from "styled-components"
 
 
 const CheckoutPage = () => {
+
   return <Wrapper>
-
-        <h2>CheckoutPage</h2>
-
-
+     <h1>Checkoutpage</h1>
   </Wrapper>
 }
 
 const Wrapper=styled.div`
-    
+
 `
 
-export default CheckoutPage
+export default CheckoutPage;

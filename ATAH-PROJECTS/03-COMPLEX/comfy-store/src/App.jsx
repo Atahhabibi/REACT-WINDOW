@@ -4,8 +4,9 @@ import {AboutPage, HomePage,CartPage, ErrorPage, ProductsPage,SingleProductsPage
 import { Navbar,Footer, Sidebar } from "./components"
 
 
-
 function App() {
+
+
   return <div>
 
     <BrowserRouter>

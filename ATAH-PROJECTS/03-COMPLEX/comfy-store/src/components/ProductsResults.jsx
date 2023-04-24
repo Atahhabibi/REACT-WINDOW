@@ -17,8 +17,8 @@ const ProductsResults = () => {
 
 
 const Wrapper=styled.div`
-    
 
+  
 `
 
 export default ProductsResults;
