@@ -4,6 +4,7 @@ import Wrapper from "../assets/wrappers/RegisterPage";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser, registerUser } from "../feature/user/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
   name: "",
@@ -13,8 +14,18 @@ const initialState = {
 };
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const [values, setValues] = useState(initialState);
   const { user, isLoading } = useSelector((store) => store.user);
+
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
+  }, [user, navigate]);
 
   const dispatch = useDispatch();
 
@@ -78,8 +89,8 @@ const Register = () => {
           value={values.password}
         />
 
-        <button className="btn btn-block" type="submit">
-          submit
+        <button className="btn btn-block" type="submit" disabled={isLoading}>
+          {isLoading ? "Loading..." : "Submit"}
         </button>
 
         <p>
