@@ -25,7 +25,6 @@ const Profile = () => {
       return;
     }
 
-    console.log(userData);
     dispatch(updateUser(userData));
   };
 
