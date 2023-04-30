@@ -8,7 +8,7 @@ const initialFiltersState = {
   searchStatus: "all",
   searchType: "all",
   sort: "latest",
-  sortOptions: ["latest", "oldest", "a-z", "z-a"]
+  sortOptions: ["latest", "oldest", "a-z", "z-a"],
 };
 
 const initialState = {
@@ -19,7 +19,7 @@ const initialState = {
   page: 1,
   stats: {},
   monthlyApplications: [],
-  ...initialFiltersState
+  ...initialFiltersState,
 };
 
 export const getAllJobs = createAsyncThunk(
@@ -28,8 +28,8 @@ export const getAllJobs = createAsyncThunk(
     try {
       const resp = await customFetch.get("/jobs", {
         headers: {
-          authorization: `Bearer ${thunkAPI.getState().user.user.token}`
-        }
+          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
+        },
       });
       return resp.data;
     } catch (error) {
@@ -37,6 +37,18 @@ export const getAllJobs = createAsyncThunk(
         thunkAPI.dispatch(logoutUser());
         return thunkAPI.rejectWithValue("Unauthorized logging out");
       }
+      return thunkAPI.rejectWithValue(error.response.data.msg);
+    }
+  }
+);
+
+export const showStats = createAsyncThunk(
+  "allJobs/showStats",
+  async (_, thunkAPI) => {
+    try {
+      const resp = await customFetch.get("/jobs/stats");
+      return resp.data;
+    } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.msg);
     }
   }
@@ -52,7 +64,7 @@ const allJobsSlice = createSlice({
 
     hideLoading: (state) => {
       state.isLoading = false;
-    }
+    },
   },
 
   extraReducers: (bundler) => {
@@ -69,7 +81,20 @@ const allJobsSlice = createSlice({
       state.isLoading = false;
       toast.error(payload);
     });
-  }
+
+    bundler.addCase(showStats.pending, (state) => {
+      state.isLoading = true;
+    });
+    bundler.addCase(showStats.fulfilled, (state, { payload }) => {
+      state.isLoading = false;
+      state.monthlyApplications = payload.monthlyApplications;
+      state.stats = payload.defaultStats;
+    });
+    bundler.addCase(showStats.rejected, (state, { payload }) => {
+      state.isLoading = false;
+      toast.error(payload);
+    });
+  },
 });
 
 export const { hideLoading, showLoading } = allJobsSlice.actions;

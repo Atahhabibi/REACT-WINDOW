@@ -1,13 +1,36 @@
-import styled from "styled-components";
+
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { showStats } from "../../feature/allJobs/allJobsSlice";
+import { ChartsContainer, Loading, StatsContainer } from "../../components";
 
 const Stats = () => {
+
+  const { isLoading, monthlyApplications} = useSelector(
+    (store) => store.allJobs
+  );
+
+
+  const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    dispatch(showStats());
+  }, []);
+
+  if(isLoading){
+    return <Loading center="center"/>
+  }
+
   return (
-    <Wrapper>
-      <h1>Stats</h1>
-    </Wrapper>
+    <>
+    <StatsContainer/>
+    {monthlyApplications.length!=0 && <ChartsContainer/>}
+
+    </>
   );
 };
 
-const Wrapper = styled.div``;
+
 
 export default Stats;
